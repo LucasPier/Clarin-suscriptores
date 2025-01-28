@@ -1,0 +1,45 @@
+{
+    "name": "Clarin Suscriptores",
+    "short_name": "clarinsuscriptores",
+    "description": "Permite ver gratis las notas para suscriptores en clarin.com",
+    "version": "1.0",
+    "author": "Lucas Pier",
+    "homepage_url": "https://github.com/LucasPier/clarinsuscriptores",
+    "manifest_version": 3,
+    "permissions": [
+      "storage",
+      "activeTab",
+      "scripting",
+      "declarativeNetRequest"
+    ],
+    "host_permissions": ["*://*.clarin.com/*"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "57": "/imagenes/favicon-57x57.png",
+        "72": "/imagenes/favicon-72x72.png",
+        "96": "/imagenes/favicon-96x96.png",
+        "152": "/imagenes/favicon-152x152.png",
+        "192": "/imagenes/favicon-192x192.png"
+      }
+    },
+    "icons": {
+        "57": "/imagenes/favicon-57x57.png",
+        "72": "/imagenes/favicon-72x72.png",
+        "96": "/imagenes/favicon-96x96.png",
+        "152": "/imagenes/favicon-152x152.png",
+        "192": "/imagenes/favicon-192x192.png"
+    },
+    "content_scripts": [
+      {
+        "js": ["clarinpre.js"],
+        "css": ["clarin.css"],
+        "matches": ["*://*.clarin.com/*"],
+        "run_at": "document_start"
+      }
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self';",
+      "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
+    }
+  }
